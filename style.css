@@ -232,3 +232,21 @@ body {
     }
   }
 }
+
+/* Mobile viewing */
+@media (max-width: 600px) {
+  body {
+    flex-direction: column-reverse;
+  }
+
+  #code {
+    flex-grow: 0.5;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    
+    #program {
+      width: unset;
+    }
+  }
+}
