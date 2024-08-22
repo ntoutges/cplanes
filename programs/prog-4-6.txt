@@ -1,0 +1,36 @@
+<DOCTYPE program>
+hp1 init plane
+hp2 init plane
+sp1 init plane
+sp2 init plane
+
+6 init time
+3 init fuel
+1000 init anim
+
+hp1 view lightgreen
+hp2 view white
+sp1 view pink
+sp2 view white
+
+hp1 goto 1
+hp2 goto 1
+hp2 give 1 to hp1
+sp1 goto 1
+sp2 goto 1
+sp2 give 1 to sp1
+
+hp1 goto 2
+hp2 goto 0
+sp1 goto 2
+sp1 give 1 to hp1
+sp2 goto 0
+
+hp1 goto 5
+hp2 wait 1
+sp1 goto 0
+sp2 goto 1
+sp2 give 1 to sp1
+
+hp2 goto -1
+hp2 give 1 to hp1

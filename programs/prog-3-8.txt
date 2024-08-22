@@ -1,0 +1,36 @@
+<DOCTYPE program>
+run init plane
+ref init plane
+fal init plane
+
+8 init time
+4 init fuel
+1000 init anim
+
+run view lightgreen
+ref view white
+fal view white
+
+run goto 1
+ref goto 1
+fal goto 1
+fal give 1 to run,ref
+
+run goto 2
+ref goto 2
+ref give 1 to run
+fal goto 0
+
+run goto 4
+ref goto 0
+fal wait 1
+
+run goto 6
+ref goto 6
+ref give 1 to run
+fal wait 1
+
+run goto 7
+ref goto 7
+fal goto -1
+fal give 1 to run,ref

@@ -1,0 +1,234 @@
+:root {
+  --bkg-color: #191e37;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background: var(--bkg-color);
+
+  display: flex;
+  flex-direction: row;
+}
+
+#planet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+
+  width: min(25vw, 50vh);
+  height: min(25vw, 50vh);
+  border-radius: 100%;
+
+  background: url(./earth.png);
+  background-size: cover;
+
+  animation: earth_anim 480s linear infinite;
+}
+
+#planet-donut-hole {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 50%;
+  height: 50%;
+
+  background: var(--bkg-color);
+  border-radius: 50%;
+
+  box-shadow: var(--bkg-color) 0px 0px 14px 14px;
+}
+
+@keyframes earth_anim {
+  0% {
+    rotate: 0deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+#code {
+  width: 25ch;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0px 30px 30px;
+}
+
+#universe {
+  flex-grow: 1;
+  position: relative;
+}
+
+#program {
+  flex-grow: 1;
+  resize: none;
+
+  background: black;
+  color: white;
+
+  padding: 0px;
+  border: solid white 1px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+#error {
+  text-align: center;
+  background: pink;
+  color: darkred;
+  padding: 5px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.planes {
+  position: absolute;
+  transition: position linear 100ms;
+  background: white;
+
+  width: 0px;
+  height: 0px;
+
+  .pos {
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    border-radius: 100%;
+    
+    translate: -50% -50%;
+  }
+
+  &.dead .pos {
+    background: red;
+  }
+
+  &.low-fuel .pos {
+    border: dashed red 2px;
+  }
+
+  .info {
+    user-select: none;
+    pointer-events: none;
+
+    background: white;
+    border: solid 2px grey;
+    
+    display: flex;
+    flex-direction: column;
+    
+    position: absolute;
+    z-index: 1;
+
+    &.show-info {
+      opacity: 0.8;
+    }
+
+    & > * {
+      padding: 5px;
+      border-bottom: dashed black 1px;
+      white-space: nowrap;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    .name {
+      text-align: center;
+      
+      &::before,
+      &::after {
+        content: '"'
+      }
+    }
+  }
+
+  &:not(:hover) .info:not(.show-info) {
+      display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    
+    .pos {
+      opacity: 0.5;
+    }
+  }
+}
+
+#plane-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+#controls {
+  position: absolute;
+  display: flex;
+
+  right: 10px;
+  top: 10px;
+
+  padding: 5px;
+  border: solid 1px lightgrey;
+  background: white;
+  border-radius: 2px;
+
+}
+
+.buttons {
+  color: #444;
+  user-select: none;
+  transition: color 100ms;
+
+  &:hover {
+    color: #ccc;
+    cursor: pointer;
+  
+    &.disabled {
+      color: pink;
+      cursor: not-allowed;
+    }
+  }
+
+  &.disabled {
+    color: #eee;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+#solutions {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 5px;
+  background: #2d355f;
+
+  & > * {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: lightgrey;
+    }
+  }
+}
